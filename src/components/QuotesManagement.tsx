@@ -278,7 +278,6 @@ export function QuotesManagement() {
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Categories</SelectItem>
                 <SelectItem value="Motivation">Motivation</SelectItem>
                 <SelectItem value="Life">Life</SelectItem>
                 <SelectItem value="Success">Success</SelectItem>
@@ -290,7 +289,6 @@ export function QuotesManagement() {
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Status</SelectItem>
                 <SelectItem value="Published">Published</SelectItem>
                 <SelectItem value="Pending Review">Pending Review</SelectItem>
                 <SelectItem value="Quote of the Day">Quote of the Day</SelectItem>

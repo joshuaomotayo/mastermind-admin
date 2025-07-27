@@ -170,7 +170,6 @@ export function UserManagement() {
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Status</SelectItem>
                 <SelectItem value="Active">Active</SelectItem>
                 <SelectItem value="Suspended">Suspended</SelectItem>
                 <SelectItem value="Banned">Banned</SelectItem>
@@ -181,7 +180,6 @@ export function UserManagement() {
                 <SelectValue placeholder="Role" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Roles</SelectItem>
                 <SelectItem value="User">User</SelectItem>
                 <SelectItem value="Moderator">Moderator</SelectItem>
                 <SelectItem value="Admin">Admin</SelectItem>
