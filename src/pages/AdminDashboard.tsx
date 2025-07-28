@@ -11,6 +11,16 @@ import { ChallengesManagement } from "@/components/ChallengesManagement";
 import { ShopManagement } from "@/components/ShopManagement";
 import { PaymentsManagement } from "@/components/PaymentsManagement";
 import { SettingsManagement } from "@/components/SettingsManagement";
+import { SearchLogsManagement } from "@/components/SearchLogsManagement";
+import { ToolsManagement } from "@/components/ToolsManagement";
+import { EmailSystemManagement } from "@/components/EmailSystemManagement";
+import { SupportManagement } from "@/components/SupportManagement";
+import { MediaManagement } from "@/components/MediaManagement";
+import { PollsManagement } from "@/components/PollsManagement";
+import { ReportsAnalyticsManagement } from "@/components/ReportsAnalyticsManagement";
+import { NotificationsManagement } from "@/components/NotificationsManagement";
+import { AdminRolesManagement } from "@/components/AdminRolesManagement";
+import { AutoLogsManagement } from "@/components/AutoLogsManagement";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const renderActiveSection = (activeSection: string) => {
@@ -35,8 +45,28 @@ const renderActiveSection = (activeSection: string) => {
       return <ShopManagement />;
     case "payments":
       return <PaymentsManagement />;
+    case "search":
+      return <SearchLogsManagement />;
+    case "tools":
+      return <ToolsManagement />;
+    case "email":
+      return <EmailSystemManagement />;
+    case "support":
+      return <SupportManagement />;
+    case "media":
+      return <MediaManagement />;
+    case "polls":
+      return <PollsManagement />;
+    case "reports":
+      return <ReportsAnalyticsManagement />;
     case "settings":
       return <SettingsManagement />;
+    case "notifications":
+      return <NotificationsManagement />;
+    case "admin-roles":
+      return <AdminRolesManagement />;
+    case "logs":
+      return <AutoLogsManagement />;
     default:
       return (
         <div className="space-y-6">
