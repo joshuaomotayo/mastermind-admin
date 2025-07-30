@@ -23,7 +23,8 @@ import {
   Settings,
   Bell,
   Shield,
-  Activity
+  Activity,
+  Heart
 } from "lucide-react";
 import { useState } from "react";
 
@@ -38,6 +39,7 @@ const menuItems = [
   { id: "quotes", label: "Quotes Management", icon: Quote },
   { id: "blog", label: "Blog/Explore", icon: FileText },
   { id: "giveaways", label: "Giveaways", icon: Gift },
+  { id: "charity", label: "Charity & Donations", icon: Heart },
   { id: "groups", label: "Groups Management", icon: Users2 },
   { id: "community", label: "Community & Posts", icon: MessageCircle },
   { id: "challenges", label: "Challenges & Events", icon: Trophy },

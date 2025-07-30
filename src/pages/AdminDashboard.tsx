@@ -21,6 +21,7 @@ import { ReportsAnalyticsManagement } from "@/components/ReportsAnalyticsManagem
 import { NotificationsManagement } from "@/components/NotificationsManagement";
 import { AdminRolesManagement } from "@/components/AdminRolesManagement";
 import { AutoLogsManagement } from "@/components/AutoLogsManagement";
+import { CharityManagement } from "@/components/CharityManagement";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const renderActiveSection = (activeSection: string) => {
@@ -35,6 +36,8 @@ const renderActiveSection = (activeSection: string) => {
       return <BlogManagement />;
     case "giveaways":
       return <GiveawaysManagement />;
+    case "charity":
+      return <CharityManagement />;
     case "groups":
       return <GroupsManagement />;
     case "community":
