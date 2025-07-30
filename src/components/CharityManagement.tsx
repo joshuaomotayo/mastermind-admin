@@ -81,7 +81,7 @@ export function CharityManagement() {
               New Charity Post
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-2xl">
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>Create New Charity Post</DialogTitle>
               <DialogDescription>Create a new charity campaign or donation request</DialogDescription>
@@ -122,6 +122,40 @@ export function CharityManagement() {
                 <Label htmlFor="details">Detailed Plan</Label>
                 <Textarea id="details" placeholder="Explain how the funds will be used..." />
               </div>
+              
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium">Upload Media</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium">Cover Images</label>
+                    <div className="mt-1 border-2 border-dashed border-muted-foreground/25 rounded-lg p-4 text-center">
+                      <div className="text-muted-foreground">
+                        <Image className="h-8 w-8 mx-auto mb-2 text-muted-foreground/50" />
+                        <p className="text-sm">Upload campaign images</p>
+                        <p className="text-xs">Multiple images supported</p>
+                      </div>
+                      <Button variant="outline" size="sm" className="mt-2">
+                        Choose Images
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label className="text-sm font-medium">Campaign Videos</label>
+                    <div className="mt-1 border-2 border-dashed border-muted-foreground/25 rounded-lg p-4 text-center">
+                      <div className="text-muted-foreground">
+                        <Video className="h-8 w-8 mx-auto mb-2 text-muted-foreground/50" />
+                        <p className="text-sm">Upload promotional videos</p>
+                        <p className="text-xs">Video files supported</p>
+                      </div>
+                      <Button variant="outline" size="sm" className="mt-2">
+                        Choose Videos
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
               <div className="flex justify-end space-x-2">
                 <Button variant="outline">Save Draft</Button>
                 <Button>Publish Post</Button>
@@ -274,7 +308,7 @@ export function CharityManagement() {
                             <Upload className="h-4 w-4" />
                           </Button>
                         </DialogTrigger>
-                        <DialogContent className="max-w-2xl">
+                        <DialogContent className="max-w-3xl max-h-[85vh] overflow-y-auto">
                           <DialogHeader>
                             <DialogTitle>Upload Proof Files</DialogTitle>
                             <DialogDescription>
