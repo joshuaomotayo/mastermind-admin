@@ -252,9 +252,73 @@ export function GiveawaysManagement() {
                   <TableCell>{giveaway.endDate}</TableCell>
                   <TableCell>
                     <div className="flex space-x-2">
-                      <Button variant="ghost" size="sm">
-                        <Edit className="h-4 w-4" />
-                      </Button>
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button variant="ghost" size="sm">
+                            <Edit className="h-4 w-4" />
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-2xl">
+                          <DialogHeader>
+                            <DialogTitle>Upload Proof Files</DialogTitle>
+                            <DialogDescription>
+                              Upload proof of fund usage and donation evidence for {giveaway.title}
+                            </DialogDescription>
+                          </DialogHeader>
+                          <div className="space-y-4">
+                            <div>
+                              <label className="text-sm font-medium">Spreadsheet Proof (CSV/XLS)</label>
+                              <div className="mt-1 border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
+                                <div className="text-muted-foreground">
+                                  <p className="text-sm">Upload fund usage spreadsheet</p>
+                                  <p className="text-xs">Supported: .csv, .xlsx, .xls</p>
+                                </div>
+                                <Button variant="outline" size="sm" className="mt-2">
+                                  Choose Spreadsheet
+                                </Button>
+                              </div>
+                            </div>
+                            
+                            <div>
+                              <label className="text-sm font-medium">Photo/Video Proof</label>
+                              <div className="mt-1 border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
+                                <div className="text-muted-foreground">
+                                  <p className="text-sm">Upload donation photos or videos</p>
+                                  <p className="text-xs">Multiple files supported</p>
+                                </div>
+                                <Button variant="outline" size="sm" className="mt-2">
+                                  Choose Files
+                                </Button>
+                              </div>
+                            </div>
+                            
+                            <div>
+                              <label className="text-sm font-medium">Description</label>
+                              <Textarea 
+                                placeholder="Describe how the funds were used..."
+                                className="mt-1"
+                              />
+                            </div>
+                            
+                            <div className="p-4 bg-blue-50 rounded-lg">
+                              <h4 className="font-medium text-blue-900 mb-2">Public Display</h4>
+                              <p className="text-sm text-blue-700">
+                                These files will be displayed publicly to show transparency in fund usage.
+                                Make sure all sensitive information is removed.
+                              </p>
+                            </div>
+                            
+                            <div className="flex gap-2">
+                              <Button className="flex-1">
+                                Upload Proof Files
+                              </Button>
+                              <Button variant="outline">
+                                Cancel
+                              </Button>
+                            </div>
+                          </div>
+                        </DialogContent>
+                      </Dialog>
                       <Button variant="ghost" size="sm">
                         <Trash2 className="h-4 w-4" />
                       </Button>

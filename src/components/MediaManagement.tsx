@@ -82,6 +82,10 @@ export function MediaManagement() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedType, setSelectedType] = useState("");
+  const [showUploadDialog, setShowUploadDialog] = useState(false);
+  const [showFolderDialog, setShowFolderDialog] = useState(false);
+  const [uploadTags, setUploadTags] = useState("");
+  const [folderName, setFolderName] = useState("");
 
   const getFileIcon = (type: string) => {
     switch (type) {
@@ -99,14 +103,125 @@ export function MediaManagement() {
           <p className="text-muted-foreground">Manage media files, images, and video content</p>
         </div>
         <div className="flex space-x-2">
-          <Button variant="outline">
-            <FolderPlus className="mr-2 h-4 w-4" />
-            New Folder
-          </Button>
-          <Button>
-            <Upload className="mr-2 h-4 w-4" />
-            Upload Media
-          </Button>
+          <Dialog open={showFolderDialog} onOpenChange={setShowFolderDialog}>
+            <DialogTrigger asChild>
+              <Button variant="outline">
+                <FolderPlus className="mr-2 h-4 w-4" />
+                New Folder
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Create New Folder</DialogTitle>
+                <DialogDescription>
+                  Create a new folder to organize your media files
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-4">
+                <div>
+                  <label className="text-sm font-medium">Folder Name</label>
+                  <Input
+                    placeholder="Enter folder name..."
+                    value={folderName}
+                    onChange={(e) => setFolderName(e.target.value)}
+                    className="mt-1"
+                  />
+                </div>
+                <div className="flex gap-2">
+                  <Button 
+                    onClick={() => {
+                      console.log("Creating folder:", folderName);
+                      setShowFolderDialog(false);
+                      setFolderName("");
+                    }}
+                    className="flex-1"
+                  >
+                    Create Folder
+                  </Button>
+                  <Button variant="outline" onClick={() => setShowFolderDialog(false)}>
+                    Cancel
+                  </Button>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
+          
+          <Dialog open={showUploadDialog} onOpenChange={setShowUploadDialog}>
+            <DialogTrigger asChild>
+              <Button>
+                <Upload className="mr-2 h-4 w-4" />
+                Upload Media
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-2xl">
+              <DialogHeader>
+                <DialogTitle>Upload Media Files</DialogTitle>
+                <DialogDescription>
+                  Upload photos and videos with tags for easy organization
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-4">
+                <div>
+                  <label className="text-sm font-medium">Choose Files</label>
+                  <div className="mt-1 border-2 border-dashed border-muted-foreground/25 rounded-lg p-8 text-center">
+                    <Upload className="mx-auto h-12 w-12 text-muted-foreground" />
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Click to upload or drag and drop
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      Support: JPG, PNG, MP4, MOV (Max 100MB)
+                    </p>
+                    <input type="file" multiple accept="image/*,video/*" className="hidden" />
+                    <Button variant="outline" className="mt-4">Choose Files</Button>
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="text-sm font-medium">Tags</label>
+                  <Input
+                    placeholder="Enter tags separated by commas (e.g., Hope, Healing, Peace)"
+                    value={uploadTags}
+                    onChange={(e) => setUploadTags(e.target.value)}
+                    className="mt-1"
+                  />
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Tags help match media with quotes automatically
+                  </p>
+                </div>
+                
+                <div>
+                  <label className="text-sm font-medium">Category</label>
+                  <Select>
+                    <SelectTrigger className="mt-1">
+                      <SelectValue placeholder="Select category" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="backgrounds">Backgrounds</SelectItem>
+                      <SelectItem value="graphics">Graphics</SelectItem>
+                      <SelectItem value="educational">Educational</SelectItem>
+                      <SelectItem value="exercises">Exercises</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                <div className="flex gap-2">
+                  <Button 
+                    onClick={() => {
+                      console.log("Uploading files with tags:", uploadTags);
+                      setShowUploadDialog(false);
+                      setUploadTags("");
+                    }}
+                    className="flex-1"
+                  >
+                    Upload Files
+                  </Button>
+                  <Button variant="outline" onClick={() => setShowUploadDialog(false)}>
+                    Cancel
+                  </Button>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
 

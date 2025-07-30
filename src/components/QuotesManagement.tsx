@@ -304,10 +304,88 @@ export function QuotesManagement() {
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
             <span>All Quotes ({filteredQuotes.length})</span>
-            <Button variant="outline" size="sm">
-              <Calendar className="mr-2 h-4 w-4" />
-              Set Quote of the Day
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" size="sm">
+                  <Calendar className="mr-2 h-4 w-4" />
+                  Auto-Generate Video
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-2xl">
+                <DialogHeader>
+                  <DialogTitle>Generate Video Slide</DialogTitle>
+                  <DialogDescription>
+                    Create a video with quote text animation and background media
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4">
+                  <div>
+                    <label className="text-sm font-medium">Select Quote</label>
+                    <Select>
+                      <SelectTrigger className="mt-1">
+                        <SelectValue placeholder="Choose a quote to generate video" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {quotesData.map((quote) => (
+                          <SelectItem key={quote.id} value={quote.id}>
+                            {quote.text.substring(0, 60)}...
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  <div>
+                    <label className="text-sm font-medium">Background Media</label>
+                    <Select>
+                      <SelectTrigger className="mt-1">
+                        <SelectValue placeholder="Auto-match by tags or choose manually" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="auto">Auto-match by tags</SelectItem>
+                        <SelectItem value="peaceful-nature">Peaceful Nature Video</SelectItem>
+                        <SelectItem value="calm-water">Calm Water Background</SelectItem>
+                        <SelectItem value="meditation-bg">Meditation Background</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  <div>
+                    <label className="text-sm font-medium">Text Animation Style</label>
+                    <Select>
+                      <SelectTrigger className="mt-1">
+                        <SelectValue placeholder="Choose animation style" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="slide-in">Slide In from Left</SelectItem>
+                        <SelectItem value="fade-in">Gentle Fade In</SelectItem>
+                        <SelectItem value="typewriter">Typewriter Effect</SelectItem>
+                        <SelectItem value="zoom-in">Zoom In Effect</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  <div className="p-4 bg-muted rounded-lg">
+                    <h4 className="font-medium mb-2">Preview Settings</h4>
+                    <div className="text-sm text-muted-foreground space-y-1">
+                      <p>• Duration: 15 seconds</p>
+                      <p>• Resolution: 1080x1080 (Square)</p>
+                      <p>• Format: MP4</p>
+                      <p>• Audio: Calm instrumental (optional)</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-2">
+                    <Button className="flex-1">
+                      Generate Video
+                    </Button>
+                    <Button variant="outline">
+                      Preview
+                    </Button>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </CardTitle>
         </CardHeader>
         <CardContent>
